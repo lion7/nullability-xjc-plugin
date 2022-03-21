@@ -6,7 +6,7 @@ plugins {
     `maven-publish`
     kotlin("jvm") version "1.6.10"
     id("org.jetbrains.dokka") version "1.6.10"
-    id("org.ajoberstar.grgit") version "4.1.0"
+    id("org.ajoberstar.grgit") version "5.0.0"
 }
 
 group = "com.github.lion7"
@@ -35,14 +35,14 @@ tasks {
         options.compilerArgs = listOf("-parameters", "-Werror")
         options.encoding = "UTF-8"
 
-        sourceCompatibility = "1.8"
-        targetCompatibility = "1.8"
+        sourceCompatibility = "11"
+        targetCompatibility = "11"
     }
 
     withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs = listOf("-java-parameters", "-Xjsr305=strict", "-Werror")
-            jvmTarget = "1.8"
+            jvmTarget = "11"
         }
     }
 
