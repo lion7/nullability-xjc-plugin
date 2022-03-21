@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    xjc("com.github.lion7:nullability-xjc-plugin:1.0.0")
+    xjc("com.github.lion7:nullability-xjc-plugin:1.0.1")
     
     implementation("org.glassfish.jaxb:jaxb-runtime:3.0.2")
 }
