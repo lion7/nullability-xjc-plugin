@@ -1,5 +1,6 @@
 package com.github.lion7.xjc.nullability
 
+import com.sun.codemodel.JMethod
 import com.sun.tools.xjc.Options
 import com.sun.tools.xjc.Plugin
 import com.sun.tools.xjc.outline.FieldOutline
@@ -20,11 +21,11 @@ class NullabilityPlugin : Plugin() {
                         (propertyInfo is ElementPropertyInfo<*, *> && propertyInfo.isRequired) ||
                         (propertyInfo is AttributePropertyInfo<*, *> && propertyInfo.isRequired)
                 val annotation = if (nonNull) org.jetbrains.annotations.NotNull::class.java else org.jetbrains.annotations.Nullable::class.java
-                it.getter().annotate(annotation)
+                it.getter()?.annotate(annotation)
             }
         return true
     }
 
-    private fun FieldOutline.getter() =
+    private fun FieldOutline.getter(): JMethod? =
         parent().implClass.getMethod("get" + propertyInfo.getName(true), emptyArray())
 }
